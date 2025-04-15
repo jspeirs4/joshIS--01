@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <Header><h1>Snake Game</h1>
+        <br>
+        <a href="scratch.html">Back to Home</a></Header>
+        
+    
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Snake Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+    canvas {
+      border: 2px solid #000;
+      background-color: #000;
+    }
+    #score {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: white;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="gameCanvas" width="300" height="300"></canvas>
+  <div id="score">Score: 0</div>
+
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const grid = 15;
+    let snake = [{ x: 150, y: 150 }];
+    let food = { x: 0, y: 0 };
+    let dx = grid;
+    let dy = 0;
+    let score = 0;
+
+    function randomPosition() {
+      return Math.floor(Math.random() * (canvas.width / grid)) * grid;
+    }
+
+    function spawnFood() {
+      food.x = randomPosition();
+      food.y = randomPosition();
+    }
+
+    function gameLoop() {
+      if (checkCollision()) {
+        resetGame();
+        return;
+      }
+
+      setTimeout(function () {
+        clearCanvas();
+        moveSnake();
+        drawSnake();
+        drawFood();
+        updateScore();
+        gameLoop();
+      }, 100);
+    }
+
+    function clearCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function moveSnake() {
+      const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+      snake.unshift(head);
+
+      if (head.x === food.x && head.y === food.y) {
+        score++;
+        spawnFood();
+      } else {
+        snake.pop();
+      }
+    }
+
+    function drawSnake() {
+      ctx.fillStyle = 'lime';
+      snake.forEach(segment => {
+        ctx.fillRect(segment.x, segment.y, grid, grid);
+      });
+    }
+
+    function drawFood() {
+      ctx.fillStyle = 'red';
+      ctx.fillRect(food.x, food.y, grid, grid);
+    }
+
+    function updateScore() {
+      document.getElementById('score').textContent = `Score: ${score}`;
+    }
+
+    function checkCollision() {
+      const head = snake[0];
+      if (
+        head.x < 0 || head.x >= canvas.width ||
+        head.y < 0 || head.y >= canvas.height ||
+        snake.slice(1).some(segment => segment.x === head.x && segment.y === head.y)
+      ) {
+        return true;
+      }
+      return false;
+    }
+
+    function resetGame() {
+      snake = [{ x: 150, y: 150 }];
+      dx = grid;
+      dy = 0;
+      score = 0;
+      spawnFood();
+      updateScore();
+      gameLoop();
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowUp' && dy === 0) {
+        dx = 0;
+        dy = -grid;
+      } else if (e.key === 'ArrowDown' && dy === 0) {
+        dx = 0;
+        dy = grid;
+      } else if (e.key === 'ArrowLeft' && dx === 0) {
+        dx = -grid;
+        dy = 0;
+      } else if (e.key === 'ArrowRight' && dx === 0) {
+        dx = grid;
+        dy = 0;
+      }
+    });
+
+    spawnFood();
+    gameLoop();
+  </script>
+</body>
+</html>
+

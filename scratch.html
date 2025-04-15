@@ -1,0 +1,95 @@
+<!-- scratch.html (Basketball Scratch Page) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Passion Page</title>
+    <link rel="stylesheet" href="css/scratch.css">
+    <!-- Add Plotly.js for interactive charts -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+</head>
+<body>
+
+  <div id="header">
+    <h1>Football</h1>
+    <a href="#Highlights">Jump to Highlights</a>
+    
+  </div>
+
+  <div id="content">
+    <h2 id="favorites">My Favorite NFL Teams & Players</h2>
+    <ol>
+        <li>New York Jets
+            <ul>
+              <li class="player">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-dBT0xRM63oB49gq8arXjHYZ8SSHChghcSA&s" alt="Garrett Wilson" width="150" height="150">
+                <p class="player-name">Garrett Wilson</p>
+              </li>
+              <li class="player">
+                <img src="https://jetswire.usatoday.com/wp-content/uploads/sites/66/2023/11/USATSI_21964416.jpg?w=1000&h=600&crop=1" alt="Breece Hall" width="150" height="150">
+                <p class="player-name">Breece Hall</p>
+              </li>
+            </ul>
+          </li>
+          
+      <li>Los Angeles Rams
+        <ul>
+            <li class="player">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRywZZNaVsz1gREmqq6B05XetVwGEBtFuZRRw&s" alt="Puka Nacua" width="150" height="150">
+            <p class="player-name">Puka Nacua</p>
+        </ul>
+      </li>
+      <li>Philadelphia Eagles
+        <ul>
+            <li class="player">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSSX5JG8Nk6_fJdl_rsM42TOWIb6F6kxYUyg&s" alt="Saquon Barkley" width="150" height="150">
+            <p class="player-name">Saquon Barkley</p>
+        </ul>
+      </li>
+    </ol>
+
+    <h2>Player Stats Over the Years</h2>
+    <div id="chart"></div>
+    <script>
+      var data = [{
+        x: ['2020', '2021', '2022'],
+        y: [102, 150, 180],  // Example: Yards per season
+        type: 'line',
+        marker: {
+          color: 'rgba(0, 123, 255, 0.6)',
+          line: {
+            color: 'rgb(0, 123, 255)',
+            width: 2
+          }
+        }
+      }];
+
+      var layout = {
+        title: 'Player Yards Per Season',
+        xaxis: {
+          title: 'Year'
+        },
+        yaxis: {
+          title: 'Yards'
+        }
+      };
+
+      Plotly.newPlot('chart', data, layout);
+    </script>
+
+<h2 id="Highlights"> Puka Nacua Highlights</h2>
+<div class="video-container"> 
+    <h3>Watch NFL Highlights</h3>
+    <iframe width="560" height="315" src="https://youtu.be/UUnC2K1tpqk" frameborder="0" allowfullscreen></iframe>
+  </div>
+  
+
+  <a href="Game.Html">Play Snake Game</a>
+<br>
+  <a href="index.html">Home Page</a>
+
+
+</body>
+</html>

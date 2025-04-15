@@ -1,0 +1,59 @@
+/* Style #1: Page background and font */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    background-color: #c2d6eb;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Style #2: Header block */
+  #header {
+    background-color: #004080;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Style #3: Content block */
+  #content {
+    margin: 30px auto;
+    padding: 20px;
+    width: 80%;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  /* Style #4: Video section block */
+  .video-container {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #e6f0ff;
+    border: 1px solid #cce0ff;
+    border-radius: 5px;
+  }
+  
+  h1, h2, h3 {
+    color: #00264d;
+  }
+  
+  a {
+    color: #0066cc;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  .player {
+    margin-bottom: 20px;
+  }
+  
+  .player-name {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #004080;
+    margin-top: 10px;
+  }
+  
